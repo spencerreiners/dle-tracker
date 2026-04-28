@@ -489,6 +489,7 @@ import { SEED_GAMES } from './gamesData.js';
             const todayHistory = game.history[today] || {};
             const done = !!todayHistory.done;
             const score = todayHistory.score;
+            const isFavorite = !!game.favorite;
 
             return (
                 <div className={`group relative border transition-all ${done
@@ -545,13 +546,13 @@ import { SEED_GAMES } from './gamesData.js';
                             </button>
                             <button
                                 onClick={onToggleFav}
-                                className={`p-1 transition-colors ${game.favorite
+                                className={`p-1 transition-colors ${isFavorite
                                         ? "text-amber-600"
                                         : "text-stone-600 hover:text-stone-300"
                                     }`}
-                                title={game.favorite ? "Unfavorite" : "Favorite"}
+                                title={isFavorite ? "Unfavorite" : "Favorite"}
                             >
-                                <span>⭐</span>
+                                <span>{isFavorite ? "★" : "☆"}</span>
                             </button>
                         </div>
                     </div>
